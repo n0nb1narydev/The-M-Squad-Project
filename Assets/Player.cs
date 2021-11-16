@@ -16,7 +16,7 @@ public class Player : MonoBehaviour //Unity Specific Term
     void Start()
     {
         // Sets player start position
-        transform.position = new Vector3(0f, 6f, 0);
+        transform.position = new Vector3(0f, 8.8f, 0);
     }
 
     void Update() // runs 60 frames per second
