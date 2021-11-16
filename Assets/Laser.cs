@@ -9,10 +9,10 @@ public class Laser : MonoBehaviour
     void Update()
     {
 
-        Vector3 laserDirection = new Vector3(1, 0, 0);
+        Vector3 laserDirection = new Vector3(0, -1, 0);
         transform.Translate(laserDirection * _laserSpeed * Time.deltaTime);
 
-        if (transform.position.x > 16f)
+        if (transform.position.y < -10f)
         {
             if (transform.parent != null)
             {

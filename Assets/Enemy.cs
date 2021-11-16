@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float _speed = 4f;
+    public float _speed = 3f;
     private GameObject _enemyPrefab;
     
     private Player _player;
@@ -22,12 +22,12 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector3.left * _speed * Time.deltaTime);
+        transform.Translate(Vector3.up * _speed * Time.deltaTime);
 
-        if (transform.position.x < -11f)
+        if (transform.position.y > 10.7f)
         {
-            float randomY = Random.Range(-4.2f, 6.2f);
-            transform.position = new Vector3(11, randomY, 0);
+            float randomX = Random.Range(-4.3f, 4.3f);
+            transform.position = new Vector3(randomX, -8.8f, 0);
         }
 
     }
