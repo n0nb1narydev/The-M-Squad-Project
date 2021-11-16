@@ -40,8 +40,7 @@ public class Player : MonoBehaviour //Unity Specific Term
         Vector3 direction = new Vector3(horizontalInput, verticalInput, 0); //make a Vector3 variable
         transform.Translate(direction * _speed * Time.deltaTime);
 
-        //Set Player Bounds and Ship Wrap
-        // transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.postion.y, -3.8f, 0), 0); Gives error CS1061
+        //Set Player Bounds
         if (transform.position.y <= 4f)
         {
             transform.position = new Vector3(transform.position.x, 4f, 0);
@@ -50,13 +49,13 @@ public class Player : MonoBehaviour //Unity Specific Term
         {
             transform.position = new Vector3(transform.position.x, 8.8f, 0);
         }
-        if (transform.position.x <= -5.6f)
+        if (transform.position.x <= -4.2f)
         {
-            transform.position = new Vector3(5.6f, transform.position.y, 0);
+            transform.position = new Vector3(-4.2f, transform.position.y, 0);
         }
-        else if (transform.position.x >= 5.7f)
+        else if (transform.position.x >= 4.2f)
         {
-            transform.position = new Vector3(-5.5f, transform.position.y, 0);
+            transform.position = new Vector3(4.2f, transform.position.y, 0);
         }
     }
 
