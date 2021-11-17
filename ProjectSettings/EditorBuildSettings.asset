@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/design a ship scene.unity
+    guid: 7b4c74dbeedb8ee49aee447ee1cc4fc8
+  - enabled: 1
+    path: Assets/Scenes/battle scene.unity
+    guid: e828f7709cb7b444aa4395dfc639db3b
   m_configObjects: {}

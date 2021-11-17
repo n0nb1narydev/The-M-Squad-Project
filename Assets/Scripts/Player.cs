@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
 
     public float _speed = 5f;
-    public GameObject _laserPrefab;
+    private GameObject _laserPrefab;
     public float _fireRate = .15f;
     private float _canFire = -2f;
 
@@ -15,8 +15,12 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        _laserPrefab = Resources.Load("Laser") as GameObject;
+
         // Sets player start position
         transform.position = new Vector3(0f, 8.8f, 0);
+        transform.localScale = new Vector3(.4f, .4f, .4f);
+        transform.rotation = Quaternion.Euler(180, 0, 0);
     }
 
     void Update() // runs 60 frames per second
@@ -37,7 +41,7 @@ public class Player : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        Vector3 direction = new Vector3(horizontalInput, verticalInput, 0); //make a Vector3 variable
+        Vector3 direction = new Vector3(horizontalInput, verticalInput * -1, 0); //make a Vector3 variable
         transform.Translate(direction * _speed * Time.deltaTime);
 
         //Set Player Bounds
@@ -63,7 +67,7 @@ public class Player : MonoBehaviour
     {
         _canFire = Time.deltaTime + _fireRate;
       
-        Vector3 offset1 = new Vector3(0, -.9f, 0);
+        Vector3 offset1 = new Vector3(0, -3.5f, 0);
         Instantiate(_laserPrefab, transform.position + offset1, Quaternion.identity); //default rotation 99% of the time what you'll use.
     }
 }

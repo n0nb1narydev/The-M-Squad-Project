@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        _player = GameObject.Find("Player").GetComponent<Player>(); //null check
+        _player = GameObject.Find("Ship").GetComponent<Player>(); //null check
         if (_player == null)
         {
             Debug.LogError("Component: Player not found.");
