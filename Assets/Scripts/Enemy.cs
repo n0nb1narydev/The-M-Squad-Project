@@ -10,11 +10,14 @@ public class Enemy : MonoBehaviour
     private Player _player;
     private Battle_Manager _bmanager;
 
+    private AudioSource harpChoir;
+
     public bool isAlive = true;
 
     void Start()
     {
         _bmanager = GameObject.Find("BattleManager").GetComponent<Battle_Manager>();
+        harpChoir = GameObject.Find("Harp Choir").GetComponent<AudioSource > ();
         _player = GameObject.Find("Ship").GetComponent<Player>(); //null check
         if (_player == null)
         {
@@ -66,8 +69,9 @@ public class Enemy : MonoBehaviour
 
         if (other.tag == "Laser")
         {
-        //        ScoreScript.scoreValue += 10;
-                isAlive = false;
+            //        ScoreScript.scoreValue += 10;
+            harpChoir.Play();
+            isAlive = false;
         }
         Destroy(other.gameObject);
       //      _anim.SetTrigger("OnEnemyDeath");

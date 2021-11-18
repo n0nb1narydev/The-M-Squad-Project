@@ -24,10 +24,14 @@ public class Rocket_Renovator : MonoBehaviour
     public GameObject wingsRightButton;
     public GameObject wingsLeftButton;
 
+    private AudioSource harpRight;
+    private AudioSource harpLeft;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        harpRight = GameObject.Find("Harp Right").GetComponent<AudioSource>();
+        harpLeft = GameObject.Find("Harp Left").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -40,6 +44,8 @@ public class Rocket_Renovator : MonoBehaviour
     {
         if(headIndex < headImages.Length)
         {
+            harpRight.Play();
+
             headIndex++;
             headRightButton.SetActive(true);
             headSprite.sprite = headImages[headIndex];
@@ -57,6 +63,8 @@ public class Rocket_Renovator : MonoBehaviour
     {
         if (headIndex > 0)
         {
+            harpLeft.Play();
+
             headIndex--;
             headLeftButton.SetActive(true);
             headSprite.sprite = headImages[headIndex];
@@ -74,6 +82,8 @@ public class Rocket_Renovator : MonoBehaviour
     {
         if (bodyIndex < bodyImages.Length)
         {
+            harpRight.Play();
+
             bodyIndex++;
             bodyRightButton.SetActive(true);
             bodySprite.sprite = bodyImages[bodyIndex];
@@ -91,6 +101,8 @@ public class Rocket_Renovator : MonoBehaviour
     {
         if (bodyIndex > 0)
         {
+            harpLeft.Play();
+
             bodyIndex--;
             bodyLeftButton.SetActive(true);
             bodySprite.sprite = bodyImages[bodyIndex];
@@ -108,6 +120,8 @@ public class Rocket_Renovator : MonoBehaviour
     {
         if (wingsIndex < wingImages.Length)
         {
+            harpRight.Play();
+
             wingsIndex++;
             wingsRightButton.SetActive(true);
             wingsSprite.sprite = wingImages[wingsIndex];
@@ -125,6 +139,8 @@ public class Rocket_Renovator : MonoBehaviour
     {
         if (wingsIndex > 0)
         {
+            harpLeft.Play();
+
             wingsIndex--;
             wingsLeftButton.SetActive(true);
             wingsSprite.sprite = wingImages[wingsIndex];
