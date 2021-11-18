@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     {
         _laserPrefab = Resources.Load("Laser") as GameObject;
 
-        // Sets player start position
+        // Sets player start position, size and rotation
         transform.position = new Vector3(0f, 8.8f, 0);
         transform.localScale = new Vector3(.4f, .4f, .4f);
         transform.rotation = Quaternion.Euler(180, 0, 0);
