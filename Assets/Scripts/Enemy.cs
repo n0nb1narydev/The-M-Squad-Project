@@ -70,6 +70,7 @@ public class Enemy : MonoBehaviour
         if (other.tag == "Laser")
         {
             //        ScoreScript.scoreValue += 10;
+            print("Hit by laser");
             harpChoir.Play();
             isAlive = false;
         }

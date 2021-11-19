@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public Player player;
+    //public Player player;
     public GameObject enemyPrefab;
     public GameObject enemyContainer;
     public bool stillSpawning;
