@@ -6,10 +6,11 @@ public class Battle_Manager : MonoBehaviour
 {
     private Player _player;
     private SpawnManager _spawnManager;
+    public UIManager uiManager;
 
     public bool playerIsAlive = true;
-    public float waveTimer = 60f;
-    public int numWaves = 5;
+    public float waveTimer = 30f;
+    public int numWaves = 1;
 
     void Start()
     {
@@ -21,21 +22,23 @@ public class Battle_Manager : MonoBehaviour
     {
         waveTimer -= Time.deltaTime;
 
-        if(waveTimer >= 0f)
+        int waveTimerInt = (int)Mathf.Round(waveTimer);
+        uiManager.UpdateTimerText(waveTimerInt);
+        
+        if (waveTimer >= 0f)
         {
-            print(waveTimer);
-            _spawnManager.stillSpawning = true;
+            print("test");
+            //_spawnManager.stillSpawning = true;
         }
         else
         {
-            if(numWaves > 0)
+            print(numWaves);
+            if(numWaves < 5)
             {
-                print("Wave Complete");
-                numWaves--;
-                _spawnManager.stillSpawning = false;
+                numWaves++;
+                uiManager.UpdateWaveText(numWaves);
                 waveTimer = 30f;
             }
-
         }
     }
 

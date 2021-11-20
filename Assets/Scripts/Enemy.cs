@@ -13,16 +13,14 @@ public class Enemy : MonoBehaviour
     private AudioSource harpChoir;
 
     public bool isAlive = true;
+    public UIManager uiManager;
 
     void Start()
     {
         _bmanager = GameObject.Find("BattleManager").GetComponent<Battle_Manager>();
         harpChoir = GameObject.Find("Harp Choir").GetComponent<AudioSource > ();
-        _player = GameObject.Find("Ship").GetComponent<Player>(); //null check
-        if (_player == null)
-        {
-            Debug.LogError("Component: Player not found.");
-        }
+        _player = GameObject.Find("Ship").GetComponent<Player>();
+        uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
     }
 
     void Update()
@@ -35,7 +33,7 @@ public class Enemy : MonoBehaviour
             transform.position = new Vector3(randomX, -8.8f, 0);
         }
 
-        if (_bmanager.numWaves == 4)
+        if (_bmanager.numWaves == 2)
         {
             speed = 4f;
         }
@@ -44,12 +42,12 @@ public class Enemy : MonoBehaviour
             speed = 5f;
 
         }
-        else if (_bmanager.numWaves == 2)
+        else if (_bmanager.numWaves == 4)
         {
             speed = 6f;
 
         }
-        else if (_bmanager.numWaves == 1)
+        else if (_bmanager.numWaves == 5)
         {
             speed = 7f;
 
@@ -63,20 +61,32 @@ public class Enemy : MonoBehaviour
 
             if (_player != null) // Null Checking
             {
-                print("Player Hit");
+                if(_player.lives > 0)
+                {
+                    _player.lives--;
+                    uiManager.UpdateLivesText(_player.lives);
+                    Destroy(this.gameObject);
+                }
+                else
+                {
+                    print("game over");
+                }
+                
             }
         }
 
         if (other.tag == "Laser")
         {
-            //        ScoreScript.scoreValue += 10;
+            _player.score += 10;
+            uiManager.UpdateScoreText(_player.score);
             harpChoir.Play();
             isAlive = false;
+            Destroy(other.gameObject);
+            //  _anim.SetTrigger("OnEnemyDeath");
+            Destroy(this.gameObject);
+            speed = 0f;
+            
         }
-        Destroy(other.gameObject);
-        //  _anim.SetTrigger("OnEnemyDeath");
-        speed = 0f;
-        Destroy(this.gameObject);
     }
 
 

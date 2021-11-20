@@ -37,11 +37,11 @@ public class SpawnManager : MonoBehaviour
             GameObject newEnemy = Instantiate(enemyPrefab, posToSpawn, Quaternion.identity);
             newEnemy.transform.parent = enemyContainer.transform; //puts enemy clones in the container
             
-            if(_bmanager.numWaves == 5)
+            if(_bmanager.numWaves == 1)
             {
                 yield return new WaitForSeconds(5.0f);
             }
-            else if(_bmanager.numWaves == 4)
+            else if(_bmanager.numWaves == 2)
             {
                 yield return new WaitForSeconds(4.0f);
 
@@ -51,12 +51,12 @@ public class SpawnManager : MonoBehaviour
                 yield return new WaitForSeconds(3.0f);
 
             }
-            else if (_bmanager.numWaves == 2)
+            else if (_bmanager.numWaves == 4)
             {
                 yield return new WaitForSeconds(2.0f);
 
             }
-            else if (_bmanager.numWaves == 1)
+            else if (_bmanager.numWaves == 5)
             {
                 yield return new WaitForSeconds(1.0f);
 

@@ -11,14 +11,19 @@ public class Player : MonoBehaviour
     public float _fireRate = .15f;
     private float _canFire = -2f;
 
-    private GameObject _exhaustParticle;
+    public int score = 0;
+    public int lives = 3;
 
+    private GameObject _exhaustParticle;
+    
 
 
     void Start()
     {
         _exhaustParticle = GameObject.Find("Particle System");
         _laserPrefab = Resources.Load("Laser") as GameObject;
+
+
 
         // Sets player start position, size and rotation
         transform.position = new Vector3(0f, 8.8f, 0);
