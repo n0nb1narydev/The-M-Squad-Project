@@ -17,13 +17,17 @@ public class Enemy : MonoBehaviour
 
     private Animator anim;
 
+    private GameObject _destroyParticle;
+    private SpriteRenderer sprite;
+
     void Start()
     {
         _bmanager = GameObject.Find("BattleManager").GetComponent<Battle_Manager>();
         harpChoir = GameObject.Find("Harp Choir").GetComponent<AudioSource > ();
         _player = GameObject.Find("Ship").GetComponent<Player>();
         uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
-        anim = GetComponent<Animator>();
+        _destroyParticle = transform.GetChild(0).gameObject;
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -85,7 +89,8 @@ public class Enemy : MonoBehaviour
             harpChoir.Play();
             isAlive = false;
             Destroy(other.gameObject);
-            anim.enabled = true;
+            sprite.enabled = false;
+            _destroyParticle.SetActive(true);
             Destroy(this.gameObject, .5f);
             speed = 0f;
             
