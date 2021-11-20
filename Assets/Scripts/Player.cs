@@ -11,10 +11,13 @@ public class Player : MonoBehaviour
     public float _fireRate = .15f;
     private float _canFire = -2f;
 
+    private GameObject _exhaustParticle;
+
 
 
     void Start()
     {
+        _exhaustParticle = GameObject.Find("Particle System");
         _laserPrefab = Resources.Load("Laser") as GameObject;
 
         // Sets player start position, size and rotation
@@ -26,7 +29,7 @@ public class Player : MonoBehaviour
     void Update() // runs 60 frames per second
     {
         CalculateMovement();
-
+        //_exhaustParticle.SetActive(true);
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire)
         {
             FireLaser();

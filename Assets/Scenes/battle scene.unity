@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -14758,12 +14758,12 @@ GameObject:
   - component: {fileID: 970769695}
   - component: {fileID: 970769700}
   m_Layer: 0
-  m_Name: Ship
+  m_Name: Ship for testing
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &970769695
 MonoBehaviour:
   m_ObjectHideFlags: 0

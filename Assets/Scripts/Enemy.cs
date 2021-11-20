@@ -70,12 +70,11 @@ public class Enemy : MonoBehaviour
         if (other.tag == "Laser")
         {
             //        ScoreScript.scoreValue += 10;
-            print("Hit by laser");
             harpChoir.Play();
             isAlive = false;
         }
         Destroy(other.gameObject);
-      //      _anim.SetTrigger("OnEnemyDeath");
+        //  _anim.SetTrigger("OnEnemyDeath");
         speed = 0f;
         Destroy(this.gameObject);
     }
