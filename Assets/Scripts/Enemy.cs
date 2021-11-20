@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     private Battle_Manager _bmanager;
 
     private AudioSource harpChoir;
+    private AudioSource evilLaugh;
 
     public bool isAlive = true;
     private UIManager uiManager;
@@ -24,6 +25,7 @@ public class Enemy : MonoBehaviour
     {
         _bmanager = GameObject.Find("BattleManager").GetComponent<Battle_Manager>();
         harpChoir = GameObject.Find("Harp Choir").GetComponent<AudioSource > ();
+        evilLaugh = GameObject.Find("Evil Laugh").GetComponent<AudioSource>();
         _player = GameObject.Find("Ship").GetComponent<Player>();
         uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
         _destroyParticle = transform.GetChild(0).gameObject;
@@ -71,6 +73,8 @@ public class Enemy : MonoBehaviour
                 if(_player.lives > 0)
                 {
                     _player.lives--;
+                    _player.isAlive = false;
+                    evilLaugh.Play();
                     uiManager.UpdateLivesText(_player.lives);
                     Destroy(this.gameObject);
                 }
@@ -86,13 +90,14 @@ public class Enemy : MonoBehaviour
         {
             _player.score += 10;
             uiManager.UpdateScoreText(_player.score);
+            speed = 0f;
             harpChoir.Play();
             isAlive = false;
             Destroy(other.gameObject);
             sprite.enabled = false;
             _destroyParticle.SetActive(true);
             Destroy(this.gameObject, .5f);
-            speed = 0f;
+            
             
         }
     }

@@ -13,8 +13,10 @@ public class Player : MonoBehaviour
 
     public int score = 0;
     public int lives = 3;
+    public bool isAlive = true;
 
     private GameObject _exhaustParticle;
+    
     
 
 
@@ -34,6 +36,11 @@ public class Player : MonoBehaviour
     void Update() // runs 60 frames per second
     {
         CalculateMovement();
+        if (!isAlive)
+        {
+            transform.position = new Vector3(0f, 8.8f, 0);
+            isAlive = true;
+        }
         //_exhaustParticle.SetActive(true);
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire)
         {
