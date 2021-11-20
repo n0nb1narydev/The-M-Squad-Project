@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9143318304981906333}
   - component: {fileID: 8210010318165440292}
   - component: {fileID: 3542953198281732689}
+  - component: {fileID: 878730384}
   m_Layer: 0
   m_Name: EnemyDemon
   m_TagString: Enemy
@@ -111,7 +112,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   isAlive: 1
-  uiManager: {fileID: 0}
 --- !u!54 &3542953198281732689
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -128,3 +128,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!95 &878730384
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2384565589573912004}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 11b973843d8ab514a8e59c337879d350, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

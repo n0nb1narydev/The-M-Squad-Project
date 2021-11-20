@@ -13,7 +13,9 @@ public class Enemy : MonoBehaviour
     private AudioSource harpChoir;
 
     public bool isAlive = true;
-    public UIManager uiManager;
+    private UIManager uiManager;
+
+    private Animator anim;
 
     void Start()
     {
@@ -21,6 +23,7 @@ public class Enemy : MonoBehaviour
         harpChoir = GameObject.Find("Harp Choir").GetComponent<AudioSource > ();
         _player = GameObject.Find("Ship").GetComponent<Player>();
         uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -82,8 +85,8 @@ public class Enemy : MonoBehaviour
             harpChoir.Play();
             isAlive = false;
             Destroy(other.gameObject);
-            //  _anim.SetTrigger("OnEnemyDeath");
-            Destroy(this.gameObject);
+            anim.enabled = true;
+            Destroy(this.gameObject, .5f);
             speed = 0f;
             
         }

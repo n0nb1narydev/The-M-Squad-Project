@@ -27,8 +27,7 @@ public class Battle_Manager : MonoBehaviour
         
         if (waveTimer >= 0f)
         {
-            print("test");
-            //_spawnManager.stillSpawning = true;
+            _spawnManager.stillSpawning = true;
         }
         else
         {
