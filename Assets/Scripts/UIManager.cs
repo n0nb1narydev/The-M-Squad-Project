@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     public Text waveText;
     public Text timerText;
 
+
     public void UpdateScoreText(int score)
     {
         scoreText.text = "Score: " + score;
