@@ -13,13 +13,14 @@ public class Enemy : MonoBehaviour
     private AudioSource harpChoir;
     private AudioSource evilLaugh;
 
-    public bool isAlive = true;
     private UIManager uiManager;
 
     private Animator anim;
 
     private GameObject _destroyParticle;
     private SpriteRenderer sprite;
+    private bool isAlive = true;
+
 
     void Start()
     {
@@ -44,22 +45,32 @@ public class Enemy : MonoBehaviour
 
         if (_bmanager.numWaves == 2)
         {
-            speed = 4f;
+            if(isAlive)
+            {
+                speed = 4f;
+            }
+            
         }
         else if (_bmanager.numWaves == 3)
         {
-            speed = 5f;
-
+            if (isAlive)
+            {
+                speed = 5f;
+            }
         }
         else if (_bmanager.numWaves == 4)
         {
-            speed = 6f;
-
+            if (isAlive)
+            {
+                speed = 6f;
+            }
         }
         else if (_bmanager.numWaves == 5)
         {
-            speed = 7f;
-
+            if (isAlive)
+            {
+                speed = 7f;
+            }
         }
 
     }
@@ -70,7 +81,7 @@ public class Enemy : MonoBehaviour
 
             if (_player != null) // Null Checking
             {
-                if(_player.lives > 0)
+                if(!_bmanager.isGameOver)
                 {
                     _player.lives--;
                     _player.isAlive = false;
@@ -78,27 +89,21 @@ public class Enemy : MonoBehaviour
                     uiManager.UpdateLivesText(_player.lives);
                     Destroy(this.gameObject);
                 }
-                else
-                {
-                    print("game over");
-                }
-                
+                    
             }
         }
 
         if (other.tag == "Laser")
         {
+            isAlive = false;
+            speed = 0f;
             _player.score += 10;
             uiManager.UpdateScoreText(_player.score);
-            speed = 0f;
             harpChoir.Play();
-            isAlive = false;
             Destroy(other.gameObject);
             sprite.enabled = false;
             _destroyParticle.SetActive(true);
-            Destroy(this.gameObject, .5f);
-            
-            
+            Destroy(this.gameObject, .5f); 
         }
     }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -28,5 +29,10 @@ public class UIManager : MonoBehaviour
     public void UpdateLivesText(int lives)
     {
         livesText.text = "Lives: " + lives;
+    }
+
+    public void StartNewGame()
+    {
+        SceneManager.LoadScene(1);
     }
 }

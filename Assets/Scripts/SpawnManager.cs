@@ -11,6 +11,8 @@ public class SpawnManager : MonoBehaviour
 
     private Battle_Manager _bmanager;
 
+    public Animator waveAnim;
+
 
     void Start()
     {
@@ -40,6 +42,7 @@ public class SpawnManager : MonoBehaviour
             if(_bmanager.numWaves == 1)
             {
                 yield return new WaitForSeconds(5.0f);
+               
             }
             else if(_bmanager.numWaves == 2)
             {
@@ -49,17 +52,14 @@ public class SpawnManager : MonoBehaviour
             else if (_bmanager.numWaves == 3)
             {
                 yield return new WaitForSeconds(3.0f);
-
             }
             else if (_bmanager.numWaves == 4)
             {
                 yield return new WaitForSeconds(2.0f);
-
             }
             else if (_bmanager.numWaves == 5)
             {
                 yield return new WaitForSeconds(1.0f);
-
             }
             else
             {

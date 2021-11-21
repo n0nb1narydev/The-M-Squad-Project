@@ -16,15 +16,14 @@ public class Player : MonoBehaviour
     public bool isAlive = true;
 
     private GameObject _exhaustParticle;
-    
-    
+    private Battle_Manager _bManager;
 
 
     void Start()
     {
         _exhaustParticle = GameObject.Find("Particle System");
         _laserPrefab = Resources.Load("Laser") as GameObject;
-
+        _bManager = GameObject.Find("BattleManager").GetComponent<Battle_Manager>();
 
 
         // Sets player start position, size and rotation
@@ -38,14 +37,23 @@ public class Player : MonoBehaviour
         CalculateMovement();
         if (!isAlive)
         {
-            transform.position = new Vector3(0f, 8.8f, 0);
-            isAlive = true;
+            if (lives < 0)
+            {
+                _bManager.GameOver();
+            }
+            else
+            {
+                transform.position = new Vector3(0f, 8.8f, 0);
+                isAlive = true;
+            }
         }
         //_exhaustParticle.SetActive(true);
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire)
         {
             FireLaser();
         }
+
+
     }
 
 
