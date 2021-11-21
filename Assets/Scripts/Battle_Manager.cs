@@ -68,12 +68,4 @@ public class Battle_Manager : MonoBehaviour
         winnerScreen.SetActive(true);
         _spawnManager.stillSpawning = false;
     }
-
-
-    IEnumerator WaitForIt()
-    {
-        waveAnim.gameObject.SetActive(true);
-        yield return new WaitForSeconds(2f);
-        waveAnim.gameObject.SetActive(false);
-    }
 }
