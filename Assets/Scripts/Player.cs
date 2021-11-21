@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
 
     private GameObject _exhaustParticle;
     private Battle_Manager _bManager;
+    private Animator rocketLaunch;
 
 
     void Start()
@@ -24,10 +25,13 @@ public class Player : MonoBehaviour
         _exhaustParticle = GameObject.Find("Particle System");
         _laserPrefab = Resources.Load("Laser") as GameObject;
         _bManager = GameObject.Find("BattleManager").GetComponent<Battle_Manager>();
+        rocketLaunch = GetComponent<Animator>();
 
+
+        rocketLaunch.enabled = false;
 
         // Sets player start position, size and rotation
-        transform.position = new Vector3(0f, 8.8f, 0);
+        transform.position = new Vector3(0f, 8f, 0);
         transform.localScale = new Vector3(.4f, .4f, .4f);
         transform.rotation = Quaternion.Euler(180, 0, 0);
     }
