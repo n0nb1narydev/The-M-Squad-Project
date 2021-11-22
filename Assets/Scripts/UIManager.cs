@@ -10,8 +10,11 @@ public class UIManager : MonoBehaviour
     public Text livesText;
     public Text waveText;
     public Text timerText;
+    public Text finalScoreText;
 
-
+    public void Start()
+    {
+    }
     public void UpdateScoreText(int score)
     {
         scoreText.text = "Score: " + score;
@@ -24,7 +27,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateTimerText(int seconds)
     {
-        timerText.text = "Next Wave: " + seconds;
+        timerText.text = "Time Remaining: " + seconds;
     }
    
     public void UpdateLivesText(int lives)
@@ -35,5 +38,10 @@ public class UIManager : MonoBehaviour
     public void StartNewGame()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void UpdateFinalScoreText(int finalScore)
+    {
+        finalScoreText.text = "Final Score: " + finalScore;
     }
 }

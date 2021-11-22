@@ -18,8 +18,11 @@ public class Enemy : MonoBehaviour
     private Animator anim;
 
     private GameObject _destroyParticle;
+
+    private GameObject _playerHitParticle;
     private SpriteRenderer sprite;
     private bool isAlive = true;
+    private ScoreManager sManager;
 
 
     void Start()
@@ -28,15 +31,17 @@ public class Enemy : MonoBehaviour
         harpChoir = GameObject.Find("Harp Choir").GetComponent<AudioSource > ();
         evilLaugh = GameObject.Find("Evil Laugh").GetComponent<AudioSource>();
         _player = GameObject.Find("Ship").GetComponent<Player>();
+        sManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
         uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
         _destroyParticle = transform.GetChild(0).gameObject;
         sprite = GetComponent<SpriteRenderer>();
+        _playerHitParticle = _player.transform.GetChild(0).gameObject;
     }
 
     void Update()
     {
         transform.Translate(Vector3.up * speed * Time.deltaTime);
-
+        _playerHitParticle.SetActive(false);
         if (transform.position.y > 10.7f)
         {
             float randomX = Random.Range(-4.3f, 4.3f);
@@ -83,6 +88,7 @@ public class Enemy : MonoBehaviour
             {
                 if(!_bmanager.isGameOver)
                 {
+                    _playerHitParticle.SetActive(true);
                     _player.lives--;
                     _player.isAlive = false;
                     evilLaugh.Play();
@@ -97,8 +103,8 @@ public class Enemy : MonoBehaviour
         {
             isAlive = false;
             speed = 0f;
-            _player.score += 10;
-            uiManager.UpdateScoreText(_player.score);
+            sManager.score += 10;
+            uiManager.UpdateScoreText(sManager.score);
             harpChoir.Play();
             Destroy(other.gameObject);
             sprite.enabled = false;
@@ -106,6 +112,4 @@ public class Enemy : MonoBehaviour
             Destroy(this.gameObject, .5f); 
         }
     }
-
-
 }

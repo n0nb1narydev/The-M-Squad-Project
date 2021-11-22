@@ -18,6 +18,8 @@ public class Battle_Manager : MonoBehaviour
     public GameObject winnerScreen;
     public bool isGameOver = false;
 
+    public ScoreManager sManager;
+
     public Animator waveAnim;
 
     void Start()
@@ -63,9 +65,10 @@ public class Battle_Manager : MonoBehaviour
 
     public void Winner()
     {
+        winnerScreen.SetActive(true);
+        uiManager.UpdateFinalScoreText(sManager.score);
         isGameOver = true;
         backgroundMusic.volume = 0;
-        winnerScreen.SetActive(true);
         _spawnManager.stillSpawning = false;
     }
 }

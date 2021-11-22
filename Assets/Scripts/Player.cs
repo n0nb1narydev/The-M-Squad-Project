@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     private GameObject _exhaustParticle;
     private Battle_Manager _bManager;
     private Animator rocketLaunch;
+    private UIManager uiManager;
 
 
     void Start()
@@ -56,8 +57,6 @@ public class Player : MonoBehaviour
         {
             FireLaser();
         }
-
-
     }
 
 

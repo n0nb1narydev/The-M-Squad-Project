@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public Animator rocketLaunch;
     public AudioSource launchSound;
 
+    public GameObject buttons;
+
     IEnumerator LoadYourAsyncScene()
     {
         yield return new WaitForSeconds(5f);
@@ -35,6 +37,7 @@ public class GameManager : MonoBehaviour
 
     public void Launch()
     {
+        buttons.SetActive(false);
         rocketLaunch.enabled = true;
         launchSound.Play();
         StartCoroutine(LoadYourAsyncScene());

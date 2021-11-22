@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuScript : MonoBehaviour
 {
+    public GameObject creditsPanel;
+    private bool creditsPanelOpen = true;
+
     public void OnStartClick()
     {
         SceneManager.LoadScene(1);
@@ -12,6 +15,16 @@ public class MainMenuScript : MonoBehaviour
 
     public void OnCreditsClick()
     {
-        //load credit screen
+        if(creditsPanelOpen)
+        {
+            creditsPanel.SetActive(false);
+            creditsPanelOpen = false;
+        }
+        else
+        {
+            creditsPanel.SetActive(true);
+            creditsPanelOpen = true;    
+        }
+        
     }
 }
